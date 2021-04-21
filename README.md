@@ -1,8 +1,8 @@
 # 任务列表
 
-+ ts 检测
-+ eslint 配合使用
-+ webpack 性能监控与优化
+- ts 检测
+- eslint 配合使用
+- webpack 性能监控与优化
 
 # 前端项目配置
 
@@ -52,32 +52,31 @@ vue-loader：处理 vue 文件（需配合插件：VueLoaderPlugin）（vue3架�
 @: 配置为 src/
 ```
 
-
 ## TypeScript 相关
 
 ### 配置文件
 
 # 包模块
-+ webpack5
-  + webpack
-  + webpack-cli
-  + webpack-dev-server
-  + webpack-merge
-  + html-webpack-plugin
-+ Vue相关资源
-  + @vue/compiler-sfc（Vue3 使用该包编译 vue 文件，Vue2 使用 vue-template-compiler）
-  + vue-loader（需要安装 16 版本）
-  + vue-style-loader：vue 解析单页面使用
-+ postcss
-  + postcss-loader
-  + precss：囊括了许多插件来支持类似 Sass 的特性，比如 CSS 变量，套嵌，mixins 等。
-  + autoprefixer：添加了 vendor 浏览器前缀，它使用 Can I Use 上面的数据
-+ TypeScript
-  + tsconfig.json：配置使用的是 vue3提供的配置
-+ 资源处理
-  + css-loader：会对css中 `@import` 和 `url()` 进行处理，就像 js 解析 `import/require()` 一样。
-  + style-loader：向 DOM 中注入 CSS。
-  + url-loader：未超过limit值，则直接将资源转base64（file-loader的操作）。超过limit值，则将资源使用引入的方式引入（url-loader封装了file-loader）
-+ 代码规范
-  + eslint（未配置完成）
 
+- webpack5
+  - webpack
+  - webpack-cli
+  - webpack-dev-server
+  - webpack-merge
+  - html-webpack-plugin
+- Vue 相关资源
+  - @vue/compiler-sfc（Vue3 使用该包编译 vue 文件，Vue2 使用 vue-template-compiler）
+  - vue-loader（需要安装 16 版本）
+  - vue-style-loader：vue 解析单页面使用
+- postcss
+  - postcss-loader
+  - precss：囊括了许多插件来支持类似 Sass 的特性，比如 CSS 变量，套嵌，mixins 等。
+  - autoprefixer：添加了 vendor 浏览器前缀，它使用 Can I Use 上面的数据
+- TypeScript
+  - tsconfig.json：配置使用的是 vue3 提供的配置
+- 资源处理
+  - css-loader：会对 css 中 `@import` 和 `url()` 进行处理，就像 js 解析 `import/require()` 一样。
+  - style-loader：向 DOM 中注入 CSS。
+  - url-loader：未超过 limit 值，则直接将资源转 base64（file-loader 的操作）。超过 limit 值，则将资源使用引入的方式引入（url-loader 封装了 file-loader）
+- 代码规范
+  - eslint（未配置完成）
