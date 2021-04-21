@@ -2,27 +2,20 @@
  * @description webpack 配置文件
  */
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {
-  merge
-} = require('webpack-merge');
-const {
-  VueLoaderPlugin
-} = require('vue-loader');
-const {
-  resolve
-} = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { merge } = require('webpack-merge');
+const { VueLoaderPlugin } = require('vue-loader');
+const { resolve } = require('path');
 
 const modeEnv = process.env.NODE_ENV;
-const webpackEnvConfig = require(`./config/webpack.${ modeEnv }.js`)
-
+const webpackEnvConfig = require(`./config/webpack.${modeEnv}.js`);
 
 module.exports = merge(webpackEnvConfig, {
   mode: modeEnv === 'dev' ? 'development' : 'production',
   // 处理热更新问题
   target: modeEnv === 'dev' ? 'web' : 'browserslist',
   entry: {
-    app: './src/main.ts'
+    app: './src/main.ts',
   },
   output: {
     path: __dirname + '/dist',
@@ -31,13 +24,13 @@ module.exports = merge(webpackEnvConfig, {
   module: {
     // 防止 webpack 解析那些任何与给定正则表达式相匹配的文件
     noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
-    
+
     rules: [
       // ts-loader (处理ts文件)
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "ts-loader",
+        loader: 'ts-loader',
         options: {
           appendTsSuffixTo: [/\.vue$/],
         },
@@ -46,18 +39,20 @@ module.exports = merge(webpackEnvConfig, {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       // url-loader (处理png、jpg、gif文件)
       {
         test: /\.(png|jpg|gif)$/i,
         exclude: /node_modules/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 8192,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
           },
-        }],
+        ],
       },
       // vue-loader (处理vue文件)
       {
@@ -78,25 +73,25 @@ module.exports = merge(webpackEnvConfig, {
             options: {
               // 用于配置【css-loader 作用域 @import 的资源之前】有多少个 loader （资料：https://zhuanlan.zhihu.com/p/94706976）
               importLoaders: 1,
-            }
+            },
           },
           'postcss-loader',
-        ]
+        ],
       },
-    ]
+    ],
   },
   resolve: {
     // 添加 .ts、.tsx 扩展
-    extensions: [".ts", ".tsx", ".js", ".vue"],
+    extensions: ['.ts', '.tsx', '.js', '.vue'],
     // 配置别名
     alias: {
       '@': resolve(__dirname, 'src/'),
-    }
+    },
   },
   plugins: [
     // 处理vue的插件
     new VueLoaderPlugin(),
-    
+
     // 作用：这个 webpack 插件会在一个单独的进程并行的进行 TypeScript 的类型检查
     new ForkTsCheckerWebpackPlugin({
       // ts 的扩展
@@ -104,21 +99,21 @@ module.exports = merge(webpackEnvConfig, {
         extensions: {
           vue: {
             enabled: true,
-            compiler: '@vue/compiler-sfc'
-          }
+            compiler: '@vue/compiler-sfc',
+          },
         },
         diagnosticOptions: {
           semantic: true,
-          syntactic: false
-        }
-      }
+          syntactic: false,
+        },
+      },
     }),
 
     // HTML处理
     new HtmlWebpackPlugin({
       title: '文档标题',
       template: './public/index.html',
-      inject: 'body'
+      inject: 'body',
     }),
-  ]
-})
+  ],
+});
