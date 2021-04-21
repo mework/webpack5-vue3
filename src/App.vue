@@ -1,9 +1,15 @@
 <template>
   <div>{{ test1 }}</div>
+  <HelloWorld />
 </template>
 
 <script lang="ts">
+import HelloWorld from '@/components/HelloWorld.vue';
+
 export default {
+  components: {
+    HelloWorld,
+  },
   setup() {
     return {
       test1: 22222
@@ -11,13 +17,3 @@ export default {
   }
 }
 </script>
-
-<style lang="postcss">
-body {
-  background-color: #000;
-  div {
-    display: flex;
-    color: red;
-  }
-}
-</style>
