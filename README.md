@@ -4,15 +4,6 @@
 + eslint 配合使用
 + webpack 性能监控与优化
 
-# 问题点
-
-+ .browserslistrc 文件会导致 webpack 热更新失效
-  + 问题前因：在构建基础结构的过程中，添加了css预处理器 postcss，并且配置了 autoprefixer 自动加入浏览器前缀插件，该插件使用 browserslist 数据进行匹配对应的浏览器进行匹配是否加入浏览器前缀，配置对应的 browserslist 后，运行一切正常，打包后的样式也生成了对应的前缀
-  + 发现问题：配置后，在后续开发环境却发现了另一个问题，开发环境下，webpack-dev-serve 热更新失效了，通过排查，loader =》 plugin 等配置，最终确定问题原因来自 browserslist 文件
-  + 解决问题：当删除 .browserslistrc 时，HRM 热更新即可生效，但是 autoprefixer 插件需要依赖于 .browserslistrc 文件进行前缀生成，所以不能删除他，接着我就去到 github 社区，找到 webpack-dev-server 插件提 issue，最终得到解决方案，原因是配置了 .browserslistrc 之后，webpack-dev-server 没有将环境视为浏览器环境，故而取消了 HRM 热更新功能，解决方案：强行执行开发环境 Target 目标，最后通过将开发环境 Target 目标设置为 browser，将生产环境再设置为 browserlist 就解决了该问题
-
-
-
 # 前端项目配置
 
 ## webpack 相关
