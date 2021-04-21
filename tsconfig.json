@@ -1,0 +1,35 @@
+{
+  // 配置查询：https://www.tslang.cn/docs/handbook/compiler-options.html
+  "compilerOptions": {
+    "baseUrl": ".", // 解析非相对模块名的基准目录
+    "target": "esnext", // 指定ECMAScript目标版本
+    "module": "es2015", // 指定生成哪个模块系统代码（vue-cli 生成的为：'esnext' ，ts官网并无此选项）
+    "strict": true, // 启用所有严格类型检查选项
+    "moduleResolution": "node", // 决定如何处理模块
+    "sourceMap": true, // 生成相应的 .map文件
+
+    // ？？？？
+    "importHelpers": true, // 从 tslib 导入辅助工具函数（比如 __extends， __rest等）
+    "skipLibCheck": true, // 忽略所有的声明文件（ *.d.ts）的类型检查
+
+    "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。（https://zhuanlan.zhihu.com/p/29022311）
+    "esModuleInterop": true,
+
+    // "outDir": "./dist/", // 重定向输出目录
+    // "noImplicitReturns": true,
+
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+
+  "include": [
+    "./src/**/*"
+  ]
+}
