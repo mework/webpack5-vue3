@@ -16,6 +16,8 @@ module.exports = {
         {
           from: resolve(__dirname, '../public'),
           to: resolve(__dirname, '../dist'),
+          // 关闭报错（当只有一个 index.html 文件的时候会报错）
+          noErrorOnMissing: true,
           globOptions: {
             // 排除 index.html 和 DS_Store
             ignore: ['**/index.html', '**/.DS_Store'],
