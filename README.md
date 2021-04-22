@@ -66,6 +66,12 @@ vue-loader：处理 vue 文件（需配合插件：VueLoaderPlugin）（vue3架�
 @: 配置为 src/
 ```
 
+### 打包工具
+
+```
+progress-bar-webpack-plugin: 打包时生成进度条
+```
+
 ## TypeScript 相关
 
 ## ESlint
