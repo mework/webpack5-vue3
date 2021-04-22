@@ -1,7 +1,22 @@
 # 任务列表
 
-- ts 配合 eslint 进行检测（进行中）
-- webpack 性能监控与优化
+- ts 配合 eslint 进行检测（finish）
+- webpack 构建优化（缓存、多核、抽离、拆分）（https://blog.csdn.net/xiaolongbaobushibao/article/details/113606097）
+  + 手动
+    + babel-loader 开启缓存（webpack5内置 cache 功能）
+    + 忽略打包、按需加载：IngorePlugin
+    + 不解析代码：exclude
+    + happyPack：多线程打包
+    + 提取公共代码和第三方代码
+    + 运用 CDN
+    + 文件名称使用 内容hash
+    + 懒加载
+    + 图片引用（设定阀值，根据文件大小选择 base64 格式或者 url 引入）
+    + webpack-bundle-analyzer：可视化分析
+  + 自动带有
+    + 代码压缩
+    + tree-shaking
+    + 作用域提升（函数调用）
 
 # 前端项目配置
 
