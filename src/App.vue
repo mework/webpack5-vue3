@@ -12,8 +12,8 @@ export default {
   },
   setup() {
     return {
-      test1: 22222
-    }
-  }
-}
+      test1: 22222,
+    };
+  },
+};
 </script>

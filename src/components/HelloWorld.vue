@@ -2,16 +2,15 @@
   <div class="c-helloworld">Hello World！{{ name }}</div>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
-
+<script lang="ts">
+import { defineComponent, DefineComponent } from 'vue';
 export default defineComponent({
-  setup(props, { emit }) {
+  setup() {
     return {
       name: 'Zebulon Jerry',
     };
   },
-});
+}) as DefineComponent;
 </script>
 
 <style style="postcss">
