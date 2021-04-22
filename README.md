@@ -53,6 +53,24 @@ vue-loader：处理 vue 文件（需配合插件：VueLoaderPlugin）（vue3架�
 
 ## TypeScript 相关
 
+## ESlint
+
+webpack嵌入：
++ eslint-webpack-plugin（webpack插件）: 在编译时对文件进行eslint检测（之前使用的是 eslint-loader ）
+
+核心：
++ eslint-plugin-prettier（插件）: 详细检测语法并将单个问题详细报告
++ plugin:vue/vue3-essential（扩展规则）: 依赖于 eslint-plugin-vue 包（官方的用于 Vue.js 的 ESLint 插件）
++ @typescript-eslint/parser（编译）: 处理TS文件编译
+
+vue-cli扩展规则：
++ plugin:vue/vue3-essential
++ eslint:recommended
++ @vue/typescript/recommended
++ @vue/prettier
++ @vue/prettier/@typescript-eslint
+
+
 ### 配置文件
 
 # 包模块
