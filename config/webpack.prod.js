@@ -4,9 +4,13 @@
 const { resolve } = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
   plugins: [
+    // 生成构建进度
+    new ProgressBarPlugin(),
+
     // 清除之前构建的文件
     new CleanWebpackPlugin(),
 
