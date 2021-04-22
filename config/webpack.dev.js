@@ -9,7 +9,7 @@ module.exports = {
     hot: true,
 
     // 运行后自动打开浏览器
-    open: true,
+    // open: true,
 
     // proxy代理接口
     proxy: {
