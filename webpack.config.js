@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
 const { VueLoaderPlugin } = require('vue-loader');
 const { resolve } = require('path');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const modeEnv = process.env.NODE_ENV;
 const webpackEnvConfig = require(`./config/webpack.${modeEnv}.js`);
@@ -18,8 +19,8 @@ module.exports = merge(webpackEnvConfig, {
     app: './src/main.ts',
   },
   output: {
-    path: __dirname + '/dist',
-    filename: 'index_bundle.js',
+    path: resolve(__dirname, 'dist'),
+    filename: 'js/app.[contenthash:10].js',
   },
   module: {
     // 防止 webpack 解析那些任何与给定正则表达式相匹配的文件
@@ -108,6 +109,13 @@ module.exports = merge(webpackEnvConfig, {
         },
       },
     }),
+
+    // ESLint
+    new ESLintPlugin({
+      context: 'src/**/*',
+      extensions: ['ts', 'js', 'json'],
+      exclude: '/node_modules/'
+  }),
 
     // HTML处理
     new HtmlWebpackPlugin({
