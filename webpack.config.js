@@ -20,7 +20,7 @@ module.exports = merge(webpackEnvConfig, {
   },
   output: {
     path: resolve(__dirname, 'dist'),
-    filename: 'js/app.[contenthash:10].js',
+    filename: 'js/[name].[contenthash:10].js',
   },
   module: {
     // 防止 webpack 解析那些任何与给定正则表达式相匹配的文件
@@ -28,6 +28,7 @@ module.exports = merge(webpackEnvConfig, {
 
     rules: [
       // ts-loader (处理ts文件)
+      // ts文件使用的loader：swc-loader: rust写的，性能第一、babel-loader：生态丰富
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
@@ -114,8 +115,8 @@ module.exports = merge(webpackEnvConfig, {
     new ESLintPlugin({
       context: 'src/**/*',
       extensions: ['ts', 'js', 'json'],
-      exclude: '/node_modules/'
-  }),
+      exclude: '/node_modules/',
+    }),
 
     // HTML处理
     new HtmlWebpackPlugin({

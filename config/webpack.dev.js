@@ -2,11 +2,13 @@
  * @description webpack开发环境配置
  */
 
-
 module.exports = {
   devServer: {
     // 热更新
     hot: true,
+
+    // 开启进度条
+    progress: true,
 
     // 运行后自动打开浏览器
     // open: true,
@@ -23,4 +25,4 @@ module.exports = {
       },
     },
   },
-}
+};
