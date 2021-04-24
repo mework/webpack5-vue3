@@ -7,6 +7,7 @@ const { merge } = require('webpack-merge');
 const { VueLoaderPlugin } = require('vue-loader');
 const { resolve } = require('path');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const modeEnv = process.env.NODE_ENV;
 const webpackEnvConfig = require(`./config/webpack.${modeEnv}.js`);
@@ -68,8 +69,9 @@ module.exports = merge(webpackEnvConfig, {
         test: /\.(post)?css$/,
         exclude: /node_modules/,
         use: [
+          MiniCssExtractPlugin.loader,
           // 基于style-loader，用于标记并动态注入文档（默认会在 vue-loader 中使用）
-          'vue-style-loader',
+          // 'vue-style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -93,6 +95,11 @@ module.exports = merge(webpackEnvConfig, {
   plugins: [
     // 处理vue的插件
     new VueLoaderPlugin(),
+
+    // 提取css
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+    }),
 
     // 作用：这个 webpack 插件会在一个单独的进程并行的进行 TypeScript 的类型检查
     new ForkTsCheckerWebpackPlugin({
